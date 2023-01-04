@@ -1,15 +1,16 @@
 <?php
 
-class Admin extends Db_object {
+class Teacher extends Db_object {
 
-    protected static $db_table = "admin";
-    protected static $db_table_field = array('first_name','last_name','email','password','user_role','image');
+    protected static $db_table = "teacher";
+    protected static $db_table_field = array('first_name','last_name','email','password','image','class_id','user_role','image');
     public $id;
     public $first_name;
     public $last_name;
     public $password;
     public $email;
-    public $user_role="admin";
+    public $class_id;
+    public $user_role = "teacher";
 
     public $image;
     public $tmp_path;
@@ -71,21 +72,19 @@ class Admin extends Db_object {
 
 
 
-    public static function verify_user($last_name, $password){
+    public static function verify_user($email, $password){
         global $database;
-        $last_name = $database->escape_string($last_name);
+        $email = $database->escape_string($email);
         $password = $database->escape_string($password);
 
         $sql = "SELECT * FROM " .self::$db_table." WHERE ";
-        $sql .= "last_name = '$last_name'";
+        $sql .= "email = '$email'";
         $sql .= " AND password = '$password'";
        // $sql .= "LIMIT 1";
 
         $the_result_array = self:: find_by_query($sql);
         return !empty($the_result_array) ? array_shift($the_result_array) : false;
     }
-
-    
 
 
 

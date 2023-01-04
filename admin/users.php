@@ -47,4 +47,4 @@ if (!$session->is_signed_in()) {
 
         
 
-<?php include("footer.php"); ?>
+<?php //include("footer.php"); ?>

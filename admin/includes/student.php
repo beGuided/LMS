@@ -1,15 +1,17 @@
 <?php
 
-class Admin extends Db_object {
+class Student extends Db_object {
 
-    protected static $db_table = "admin";
-    protected static $db_table_field = array('first_name','last_name','email','password','user_role','image');
+    protected static $db_table = "student";
+    protected static $db_table_field = array('first_name','last_name','email','password','std_class_id','std_parent_id','user_role','image');
     public $id;
     public $first_name;
     public $last_name;
-    public $password;
     public $email;
-    public $user_role="admin";
+    public $password;
+    public $std_class_id;
+    public $std_parent_id;
+    public $user_role="student";
 
     public $image;
     public $tmp_path;
@@ -68,9 +70,7 @@ class Admin extends Db_object {
     }
 
 
-
-
-
+    
     public static function verify_user($last_name, $password){
         global $database;
         $last_name = $database->escape_string($last_name);
@@ -86,10 +86,18 @@ class Admin extends Db_object {
     }
 
     
+    public static function student_by_class_id($class_id){
+        global $database;
+        $class_id = $database->escape_string($class_id);
+        
+        $sql = "SELECT * FROM " .self::$db_table." WHERE ";
+        $sql .= "std_class_id = '$class_id'";
+        $sql .= " ORDER BY std_class_id ASC";
+        return self::find_by_query($sql);
+     
+    }
 
-
-
-
+    
 
 } //END OF USER CLASS
 

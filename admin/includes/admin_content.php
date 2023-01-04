@@ -1,45 +1,25 @@
 
-
-
 <div class="container-fluid">
+<?php
+    $first_name = ucfirst($_SESSION['firstname']);
+    $last_name =ucfirst($_SESSION['lastname']);
+    $role =ucfirst( $_SESSION['role']);
+    // $class_id = $_SESSION['class_id'];
+     $id = $_SESSION['user_id'];
 
+?>
+ 
+        
     <!-- Page Heading -->
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-            Admin
-                <small>Subheading</small>
+                 <?php  echo  ucfirst($role)?>
+                <small> <?php echo " $first_name $last_name "?> </small>
             </h1>
-            <?php
-
-
-
-           $Admin= Admin::find_by_id(1);
-           //foreach ($User as $user){
-           echo $Admin->password;
-
-
-
-//            $user =  User::find_by_id(6);
-//            $user->username= "Example_username";
-//            $user->password= "Example_password";
-//            $user->save();
-
-//            $user= new Photo();
-//            $user->filename= "Example_picture";
-//            $user->type= "image";
-//            $user->size= "favour";
-//            $user->title= "weeding user ";
-//            $user->save();
-            //echo INCLUDES_PATH;
-
-            ?>
-
-
-
             <ol class="breadcrumb">
                 <li>
-                    <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                    <i class="fa fa-dashboard"></i>  <a href="index.php">Dashboard</a>
                 </li>
                 <li class="active">
                     <i class="fa fa-file"></i> Blank Page
@@ -48,5 +28,20 @@
         </div>
     </div>
     <!-- /.row -->
+    <div class="text-left"><h3>Profile Information</h3></div>
+    <?php $user = $role::find_by_id($id);?>
+           <div class="row">
+                <div class="col-lg-6">
+                <img width="200px" src="<?php //  echo $user->image_path_and_placeholder();?>" height= "200px" alt="image">
+                </div>
+                <div class="col-lg-6">
+                    <h3><?php echo "$first_name  $last_name "?></h3>
+                    <h3><?php //echo  $user->email ?></h3>
+                    <h4><?php echo $role ?></h4>
+                </div>
+           </div>
+        
+           </div>
+
 
 </div>

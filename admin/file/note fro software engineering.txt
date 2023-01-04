@@ -1,0 +1,21 @@
+the best way to plan organize and execute a project 
+
+
+qote
+
+There are two ways of constructing a software design. One way is to make
+it so simple that there are obviously no defi ciencies. The other way is to
+make it so complicated that there are no obvious defi ciencies. The fi rst
+method is far more diffi cult.
+—C.A.R. Hoare 
+
+
+ All projects perform the same basic tasks:
+1. Requirements Gathering
+2. High-level Design
+3. Low-level Design
+4. Development
+5. Testing
+6. Deployment
+7. Maintenance
+8. Wrap-up

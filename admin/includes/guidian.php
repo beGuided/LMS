@@ -1,15 +1,15 @@
 <?php
 
-class Admin extends Db_object {
+class Guidian extends Db_object {
 
-    protected static $db_table = "admin";
+    protected static $db_table = "parent";
     protected static $db_table_field = array('first_name','last_name','email','password','user_role','image');
     public $id;
     public $first_name;
     public $last_name;
     public $password;
     public $email;
-    public $user_role="admin";
+    public $user_role= "parent";
 
     public $image;
     public $tmp_path;
@@ -68,16 +68,13 @@ class Admin extends Db_object {
     }
 
 
-
-
-
-    public static function verify_user($last_name, $password){
+    public static function verify_user($email, $password){
         global $database;
-        $last_name = $database->escape_string($last_name);
+        $email = $database->escape_string($email);
         $password = $database->escape_string($password);
 
         $sql = "SELECT * FROM " .self::$db_table." WHERE ";
-        $sql .= "last_name = '$last_name'";
+        $sql .= "email = '$email'";
         $sql .= " AND password = '$password'";
        // $sql .= "LIMIT 1";
 
@@ -86,8 +83,6 @@ class Admin extends Db_object {
     }
 
     
-
-
 
 
 

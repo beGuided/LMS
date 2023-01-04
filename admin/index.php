@@ -1,8 +1,12 @@
 <?php include("includes/header.php"); ?>
 <?php
+if(isset($_GET['role']))
+{
+$role = $_GET['role'];
+}
 
 if(!$session->is_signed_in()){
-    redirect("login.php");
+    redirect("../index.php");
 }
 ?>
 

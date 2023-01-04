@@ -1,0 +1,63 @@
+body {
+  background-color: mintcream;
+  border: 2px green;
+  background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.teacher {
+  background: url("../school2.jpeg") rgb(9, 59, 2);
+}
+.student {
+  background: url("../school2.jpeg") rgb(2, 3, 59);
+}
+.Parent {
+  background: url("../school2.jpeg") rgb(73, 5, 47);
+}
+.top-margin {
+  margin-top: 100px;
+}
+.fake-title {
+  margin-bottom: 40px;
+}
+.pad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 380px;
+  text-align: center;
+}
+.home-slide {
+  margin-top: -100px;
+  background: url("../school2.jpeg") rgb(2, 54, 61);
+  background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 110vh;
+  align-items: center;
+}
+.contents {
+  margin-top: 30px;
+  text-align: left;
+  color: white;
+}
+.contents h2 {
+  font-size: 60px;
+}
+.container-form {
+  width: 400px;
+  margin: auto;
+}
+h1 {
+  font-size: 60px;
+
+  color: ghostwhite;
+  font-family: monospace;
+  text-align: center;
+}
+
+a {
+  color: rgb(254, 255, 255);
+  text-align: center;
+}

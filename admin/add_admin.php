@@ -6,25 +6,23 @@ if(!$session->is_signed_in()){
 ?>
 <?php
 
-if(empty($_GET['id'])) {
-    redirect("admin.php");
-}
+$admin = new Admin();
+    if(isset($_POST['create'])){
+        if($admin){
+            $admin->first_name = $_POST['first_name'];
+            $admin->last_name = $_POST['last_name'];
+            $admin->email = $_POST['email'];
+            $admin->password = $_POST['password'];
 
-    $admin= Admin::find_by_id($_GET['id']);
-   if(isset($_POST['update'])) {
-       if($admin) {
-
-           $admin->first_name = $_POST['first_name'];
-           $admin->last_name = $_POST['last_name'];
-           $admin->email = $_POST['email'];
-           $admin->password = $_POST['password'];
-         
             $admin->set_file($_FILES['image']);
             $admin->upload_photo();
+            //$session->message("The user {$user->username} has been added");
             $admin->save();
+
         }
-        redirect("edit_admin.php");
-    }
+        redirect("admin.php");
+
+        }
 
 ?>
 
@@ -52,42 +50,33 @@ if(empty($_GET['id'])) {
                     </h1>
 
                     <form action="" method="post" enctype="multipart/form-data">
-                        <div class="col-md-6 ">
-                            <img src="<?php echo $admin->image_path_and_placeholder();?>" width="100px" height="100px">
-                        </div>
-
-                    <div class="col-md-6 ">
-                    <div class="form-group">
-                            <label for="image">Profiles image</label>
-                            <input name="MAX_FILE_SIZE" type="hidden" value="2000000">
-                            <input name="image" type="file"  accept=".png, .jpg, .jpeg">
-                            <!-- <input type="file" name="image"> -->
-                        </div>
-
+                    <div class="col-md-6 col-md-offset-3">
                         <div class="form-group">
                             <label for="first_name">First Name</label>
-                            <input type="text" name="first_name" class="form-control" value="<?Php echo $admin->first_name;?>">
+                            <input type="text" required name="first_name" class="form-control" >
                         </div>
 
                         <div class="form-group">
                             <label for="last_name">Last Name</label>
-                            <input type="text" name="last_name" class="form-control"  value="<?Php echo $admin->last_name;?>" >
+                            <input type="text" required name="last_name" class="form-control" >
                         </div>
 
                        <div class="form-group">
-                           <label for="email">Email</label>
-                           <input type="text" name="email" class="form-control"  value="<?Php echo $admin->email;?>">
+                           <label for="email">email</label>
+                           <input type="text" required name="email" class="form-control">
                        </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" name="password" class="form-control"  value="<?Php echo $admin->password;?>">
-                        </div>
-
-                        <div class="form-group">
-                            <input type="submit" name="update" value="update" class="btn btn-primary pull-right">
+                            <input type="password" required name="password" class="form-control">
                         </div>
                         <div class="form-group">
-                            <a href="delete.php?id=<?php echo $admin->id; ?>" class="btn btn-danger" >Delete</a>
+                            <label for="image">Profiles image</label>
+                            <input name="MAX_FILE_SIZE" type="hidden" value="1000000">
+                            <input name="image" type="file"  accept=".png, .jpg, .jpeg">
+                            <!-- <input type="file" name="image"> -->
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Ceate" name="create" class="btn-primary btn-sm pull-right">
                         </div>
 
 
