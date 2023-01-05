@@ -65,7 +65,7 @@ $Assessments = Assessment::find_all();
                                 <div class="action_link">
                                     <a href="delete.php?id=<?php echo $assesment->id?>?class=Asessment&link=assessment.php">Delete</a>
                                     <a href="edit_assessment.php?id=<?php echo $assesment->id?>">Edit</a>
-                                    <a> Download</a>
+                                    <a href="<?php  echo $result->picture_path();?>"> Download</a>
                                 </div>
                                 </td>
                                  <td><?php echo $assesment->title?></td>                         
@@ -89,7 +89,7 @@ $Assessments = Assessment::find_all();
                                 <div class="action_link">
                                     <a href="delete.php?id=<?php echo $assesment->id?>?class=Asessment&link=assessment.php">Delete</a>
                                     <a href="edit_assessment.php?id=<?php echo $assesment->id?>">Edit</a>
-                                    <a> Download</a>
+                                    <a href="<?php  echo $result->picture_path();?>"> Download</a>
                                 </div>
                                 </td>
                                 <td><?php echo $assesment->title?></td>

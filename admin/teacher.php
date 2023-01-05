@@ -46,6 +46,7 @@
                                 <th>Last Name</th>
                                 <th>Email</th>
                                 <th>class</th>
+                                <th>Password</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -67,6 +68,7 @@
                                  <td><?php echo $teacher->last_name?></td>
                                  <td><?php echo $teacher->email?></td>
                                  <td><?php echo $teacher->class_id?></td>
+                                 <td><?php echo $teacher->password?></td>
                                     
                                   
                                 </tr>

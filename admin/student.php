@@ -50,6 +50,7 @@ $students_by_class = Student::student_by_class_id($teacher_class_id);
                                 <th>Email</th>
                                 <th>Class </th>
                                 <th>Parent id </th>
+                                <th>Password </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -72,6 +73,7 @@ $students_by_class = Student::student_by_class_id($teacher_class_id);
                                  <td><?php echo $student->email?></td>
                                  <td><?php echo $student->std_class_id?></td>
                                  <td><?php echo $student->std_parent_id?></td>
+                                 <td><?php echo $student->password?></td>
                                   
                                 </tr>
                             <?php endforeach; ?> 

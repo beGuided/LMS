@@ -9,12 +9,14 @@ if(!$session->is_signed_in()){
  $user_role= $_SESSION['role'];
  $user_id= $_SESSION['user_id'];
 
- if($user_role != "student" && $user_role != "parent" ){ 
+ if($user_role != "student" && $user_role != "guidian" ){ 
     redirect('./index.php');  
 }
  $id = Student::find_by_id($user_id);
  if($id){
 $assessments_by_class_id = Assessment::assessment_by_class_id($id->std_class_id);
+// $assessments_by_class_id = Assessment::assessment_by_class_id($id->std_class_id);
+
  }
 
 ?>
@@ -81,28 +83,7 @@ $assessments_by_class_id = Assessment::assessment_by_class_id($id->std_class_id)
 
                     <?php endforeach; ?>
                     <?php } else{?>
-                        <?php foreach ($assessments_by_author as $assesment) :?>
-
-                            <tr>
-                           
-                                 <td><?php echo $assesment->id?></td>
-                                <td><i class="fa fa-fw fa-file" class="lg"></i>
-                                <div class="action_link">
-                                    <a href="delete.php?id=<?php echo $assesment->id?>?class=Asessment&link=assessment.php">Delete</a>
-                                    <a href="edit_assessment.php?id=<?php echo $assesment->id?>">Edit</a>
-                                    <a> Download</a>
-                                </div>
-                                </td>
-                                <td><?php echo $assesment->title?></td>
-                                <td><?php echo $assesment->author?>
-                                    <?php //$teacher = Teacher::find_by_id( $assesment->author);
-                                    //echo $teacher->first_name. $teacher->last_name;?> 
-                                </td>
-                                <td><?php echo $assesment->asse_class_id?></td>
-                                <td><?php echo $assesment->deadline?></td>
-                                
-                            </tr>
-                        <?php endforeach; ?> 
+                     
                      <?php  } ?>
                             </tbody>
                         </table>

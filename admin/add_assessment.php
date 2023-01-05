@@ -6,9 +6,11 @@ if(!$session->is_signed_in()){
     redirect("../index.php");
 }
 ?>
-
-
 <?php
+$user_role = $_SESSION['role'];
+ if($user_role != "admin" && $user_role != "teacher" ){ 
+    redirect('./index.php');  
+}
 $message = "";
 $teachers = Teacher::find_all();
 if(isset($_POST['submit'])){

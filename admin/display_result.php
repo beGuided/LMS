@@ -7,13 +7,11 @@ if(!$session->is_signed_in()){
 <?php
  $user_role = $_SESSION['role'];
  $user_id = $_SESSION['user_id'];
- if($user_role != "student" && $user_role != "parent" ){ 
+ if($user_role != "student" && $user_role != "guidian" ){ 
      redirect('./index.php');  
  }
 
 $results_by_std_id = Result::result_by_std_id($user_id);
-
-
 
 ?>
 
@@ -41,12 +39,11 @@ $results_by_std_id = Result::result_by_std_id($user_id);
                     </h1>
 
                     <div class="col-md-12">
-                        <div class="row">   <a href="add_result.php" class="btn btn-primary"> Add Result</a></div>
                         <table class="table table-hover ">
                             <thead>
                             <tr>
                            
-                                 <th>File</th>
+                                <th>File</th>
                                 <th>Filename</th>
                                 <th>Student id</th>
                                 <th>For class</th>
@@ -78,15 +75,18 @@ $results_by_std_id = Result::result_by_std_id($user_id);
                                 
                             </tr>
                     <?php endforeach; ?>
-                    <?php } else{?>
-                        <?php foreach ($results_by_author as $result) :?>
-
+                    <?php } else{
+                            $users  = Student::student_by_parent_id($user_id);
+                        ?>
+                        
+                        <?php foreach ($users as $student) :
+                            $results= Result::result_by_std_id($student->id);
+                            ?>
+                                 <?php foreach ($results as $result) :?>
                             <tr>
                                 <td><i class="fa fa-fw fa-file" class="lg"></i>
                                 <div class="action_link">
-                                    <a href="delete.php?id=<?php echo $result->id?>?class=Asessment&link=assessment.php">Delete</a>
-                                    <a href="edit_result.php?id=<?php echo $result->id?>">Edit</a>
-                                    <a> Download</a>
+                                <a href="<?php  echo $result->picture_path();?>" download> Download</a>
                                 </div>
                                 </td>
                                  <td><?php echo $result->filename?></td>
@@ -100,6 +100,7 @@ $results_by_std_id = Result::result_by_std_id($user_id);
                                
                                 
                             </tr>
+                            <?php endforeach; ?> 
                         <?php endforeach; ?> 
                      <?php  } ?>
                             </tbody>

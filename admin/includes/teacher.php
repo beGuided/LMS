@@ -70,8 +70,6 @@ class Teacher extends Db_object {
 
 
 
-
-
     public static function verify_user($email, $password){
         global $database;
         $email = $database->escape_string($email);

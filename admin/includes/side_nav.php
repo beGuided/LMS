@@ -47,8 +47,11 @@
 
        
        <?php } elseif($user_role == "student" ){  ?>
+        <li>
+            <a href="profile_details.php"><i class="fa fa-fw fa-bar-chart-o"></i> Parent Informaton</a>
+        </li> 
 
-            <li>
+        <li>
             <a href="display_assessment.php"><i class="fa fa-fw fa-edit"></i> Assessement</a>
         </li>
         <li>
@@ -56,7 +59,16 @@
         </li> 
       
 
-       <?php } ?>
+        <?php } else{?>
+            
+         <li>
+            <a href="profile_details.php"><i class="fa fa-fw fa-bar-chart-o"></i> Childs Informaton</a>
+        </li> 
+        <li>
+            <a href="display_result.php"><i class="fa fa-fw fa-bar-chart-o"></i> Result</a>
+        </li> 
+            
+        <?php } ?>
 
          <!-- <li>
   

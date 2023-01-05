@@ -9,7 +9,7 @@ class Guidian extends Db_object {
     public $last_name;
     public $password;
     public $email;
-    public $user_role= "parent";
+    public $user_role= "guidian";
 
     public $image;
     public $tmp_path;
@@ -59,7 +59,6 @@ class Guidian extends Db_object {
                 return false;
             }
 
-
     }
 
     public function image_path_and_placeholder(){
@@ -76,13 +75,23 @@ class Guidian extends Db_object {
         $sql = "SELECT * FROM " .self::$db_table." WHERE ";
         $sql .= "email = '$email'";
         $sql .= " AND password = '$password'";
-       // $sql .= "LIMIT 1";
 
         $the_result_array = self:: find_by_query($sql);
         return !empty($the_result_array) ? array_shift($the_result_array) : false;
     }
-
     
+    public static function parent_by_std_id($std_parent_id){
+        global $database;
+        $std_parent_id = $database->escape_string($std_parent_id);
+        
+        $sql = "SELECT * FROM " .self::$db_table." WHERE ";
+        $sql .= "id = '$std_parent_id'";
+        $sql .= " ORDER BY id ASC";
+        //  $sql .= "LIMIT 1";
+        $the_result_array =self::find_by_query($sql);
+          return array_shift($the_result_array) ;
+     
+    }
 
 
 

@@ -63,7 +63,7 @@ $Results = Result::find_all();
                                 <div class="action_link">
                                     <a href="delete.php?id=<?php echo $result->id?>?class=Asessment&link=assessment.php">Delete</a>
                                     <a href="edit_result.php?id=<?php echo $result->id?>">Edit</a>
-                                    <a> Download</a>
+                                    <a href="<?php  echo $result->picture_path();?>"> Download</a>
                                 </div>
                                 </td>
                                  <td><?php echo $result->filename?></td>
@@ -86,7 +86,7 @@ $Results = Result::find_all();
                                 <div class="action_link">
                                     <a href="delete.php?id=<?php echo $result->id?>?class=Asessment&link=assessment.php">Delete</a>
                                     <a href="edit_result.php?id=<?php echo $result->id?>">Edit</a>
-                                    <a> Download</a>
+                                    <a href="<?php  echo $result->picture_path();?>"> Download</a>
                                 </div>
                                 </td>
                                  <td><?php echo $result->filename?></td>

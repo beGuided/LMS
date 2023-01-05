@@ -85,7 +85,7 @@ class Student extends Db_object {
         return !empty($the_result_array) ? array_shift($the_result_array) : false;
     }
 
-    
+ 
     public static function student_by_class_id($class_id){
         global $database;
         $class_id = $database->escape_string($class_id);
@@ -95,8 +95,18 @@ class Student extends Db_object {
         $sql .= " ORDER BY std_class_id ASC";
         return self::find_by_query($sql);
      
-    }
-
+    } 
+    
+    public static function student_by_parent_id($parent_id){
+        global $database;
+        $parent_id = $database->escape_string($parent_id);
+        
+        $sql = "SELECT * FROM " .self::$db_table." WHERE ";
+        $sql .= "std_parent_id = '$parent_id'";
+        $sql .= " ORDER BY std_parent_id ASC";
+        return self::find_by_query($sql);
+     
+    } 
     
 
 } //END OF USER CLASS

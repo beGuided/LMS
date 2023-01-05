@@ -9,6 +9,10 @@ if(!$session->is_signed_in()){
 
 
 <?php
+    $user_role = $_SESSION['role'];
+    if($user_role != "admin" && $user_role != "teacher" ){ 
+       redirect('./index.php');  
+   }
 $message = "";
 $students = Student::find_all();
 if(isset($_POST['submit'])){

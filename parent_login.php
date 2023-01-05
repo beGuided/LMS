@@ -33,15 +33,14 @@ if($session->is_signed_in()){
       $_SESSION['lastname'] = $user_info->last_name;
       $_SESSION['email'] = $user_info->email ;
       $_SESSION['role'] =  $user_info->user_role ;
-   }
-  
+   }else{  
       $_SESSION['firstname'] ="";
       $_SESSION['lastname'] = "";
       $_SESSION['email'] ="";
       $_SESSION['role'] ="";
   
    }
-  
+}
 ?>
     <body class="Parent">
 
